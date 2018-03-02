@@ -13,7 +13,7 @@
         HP: <input type="number" ref="hp" v-model="totalHp">
       </li>
       <li>
-        <button @click="onAddPlayer">Add</button>
+        <button ref="addplayerbutton" @click="onAddPlayer">Add</button>
       </li>
     </ul>
   </div>
@@ -51,6 +51,25 @@ export default {
     },
     onRollInitiative () {
       this.initiative = Math.ceil(Math.random() * 20)
+    },
+    onKeyPress (e) {
+      if (e.target === this.$refs.addplayerbutton) {
+        return
+      }
+      if (e.key === 'Enter') {
+        this.onAddPlayer()
+      }
+    }
+  },
+  watch: {
+    showAddPlayer (opened) {
+      window.removeEventListener('keyup', this.onKeyPress)
+      if (opened) {
+        this.$nextTick(() => {
+          window.addEventListener('keyup', this.onKeyPress)
+          this.$refs.name.focus()
+        })
+      }
     }
   }
 }
