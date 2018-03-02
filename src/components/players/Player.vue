@@ -1,15 +1,15 @@
 <template>
-  <ul v-bind:class="{ current: currentPlayer === player }">
-    <li>
+  <ul v-bind:class="{ current: currentPlayer === player, 'player-wrapper': true }">
+    <li class="player-name">
       {{player.name}}
     </li>
-    <li>
-      Initiative: <input type="text" v-model="initiative">
+    <li class="player-initiative">
+      Initiative: <input type="number" v-model="initiative">
     </li>
-    <li>
-      HP: <input type="text" v-model="totalHp">
+    <li class="player-hp">
+      HP: <input type="number" v-model="totalHp">
     </li>
-    <li>
+    <li class="player-status">
       Status effects:
       <ul v-if="player.statusEffects.length">
         <li v-for="status in player.statusEffects" :key="status.id">
@@ -25,7 +25,7 @@
             Name: <input type="text" ref="statusName" v-model="statusName">
           </p>
           <p>
-            Duration: <input type="text" ref="turnsLeft" v-model="turnsLeft">
+            Duration: <input type="number" ref="turnsLeft" v-model="turnsLeft">
           </p>
           <p>
             <button @click="onAddStatus();showAddStatusEffect = false">Add</button>
@@ -81,5 +81,23 @@ export default {
 <style scoped>
 .current {
   background: #afa;
+}
+.player-wrapper {
+  overflow: hidden;
+  margin: 0;
+  padding: 0
+}
+.player-name,
+.player-initiative,
+.player-hp,
+.player-status {
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+}
+.player-status {
+  width: 40%;
 }
 </style>

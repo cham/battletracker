@@ -6,11 +6,11 @@
         Name: <input type="text" ref="name" v-model="name">
       </li>
       <li>
-        Initiative: <input type="text" ref="initiative" v-model="initiative">
+        Initiative: <input type="number" ref="initiative" v-model="initiative">
         <button @click="onRollInitiative">Roll</button>
       </li>
       <li>
-        HP: <input type="text" ref="hp" v-model="totalHp">
+        HP: <input type="number" ref="hp" v-model="totalHp">
       </li>
       <li>
         <button @click="onAddPlayer">Add</button>
