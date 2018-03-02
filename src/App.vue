@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <add-player></add-player>
-    <player v-for="player in players" :key="player.id" v-bind:player="player"></player>
+    <header>
+      <add-player></add-player>
+    </header>
+    <div>
+      <player v-for="player in players" :key="player.id" v-bind:player="player"></player>
+    </div>
   </div>
 </template>
 
@@ -22,4 +26,13 @@ export default {
 </script>
 
 <style scoped>
+#app {
+  font-family: sans-serif;
+}
+header {
+  height: 75px;
+  background: #555;
+  color: #fff;
+  padding: 5px 10px;
+}
 </style>
