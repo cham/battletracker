@@ -4,10 +4,22 @@
       {{player.name}}
     </li>
     <li class="player-initiative">
-      Initiative: <input type="number" v-model="initiative">
+      Initiative: {{player.initiative}}
     </li>
     <li class="player-hp">
-      HP: <input type="number" v-model="totalHp">
+      HP: {{player.totalHp}}
+      <button @click="showTakeDamage = true">Damage</button>
+      <modal v-if="showTakeDamage" @cancel="showTakeDamage = false">
+        <h3 slot="header">Damage Player</h3>
+        <div slot="body">
+          <p>
+            Amount: <input type="number" ref="playerdamage" v-model="playerDamage">
+          </p>
+          <p>
+            <button ref="adddamagebutton" @click="onAddDamage()">Damage</button>
+          </p>
+        </div>
+      </modal>
     </li>
     <li class="player-status">
       Status effects:
@@ -22,10 +34,10 @@
         <h3 slot="header">Add Status Effect</h3>
         <div slot="body">
           <p>
-            Name: <input type="text" ref="statusName" v-model="statusName">
+            Name: <input type="text" ref="statusname" v-model="statusName">
           </p>
           <p>
-            Duration: <input type="number" ref="turnsLeft" v-model="turnsLeft">
+            Duration: <input type="number" ref="turnsleft" v-model="turnsLeft">
           </p>
           <p>
             <button ref="addstatusbutton" @click="onAddStatus()">Add</button>
@@ -49,11 +61,12 @@ export default {
   props: ['player'],
   data () {
     return {
-      totalHp: this.player.totalHp,
       initiative: this.player.initiative,
       showAddStatusEffect: false,
+      showTakeDamage: false,
       statusName: '',
-      turnsLeft: 0
+      turnsLeft: 0,
+      playerDamage: 0
     }
   },
   computed: mapGetters({
@@ -61,7 +74,8 @@ export default {
   }),
   methods: {
     ...mapActions([
-      'addStatus'
+      'addStatus',
+      'damagePlayer'
     ]),
     onAddStatus () {
       if (!valid(this)) {
@@ -75,22 +89,52 @@ export default {
       })
       this.showAddStatusEffect = false
     },
-    onKeyPress (e) {
+    onAddDamage () {
+      const damage = parseInt(this.playerDamage, 0)
+      this.$refs.playerdamage.classList.remove('invalid')
+      if (!damage) {
+        this.$refs.playerdamage.classList.add('invalid')
+        return
+      }
+      this.damagePlayer({
+        playerId: this.player.id,
+        damage
+      })
+      this.showTakeDamage = false
+    },
+    onKeyPressStatus (e) {
       if (e.target === this.$refs.addstatusbutton) {
         return
       }
       if (e.key === 'Enter') {
         this.onAddStatus()
       }
+    },
+    onKeyPressDamage (e) {
+      if (e.target === this.$refs.adddamagebutton) {
+        return
+      }
+      if (e.key === 'Enter') {
+        this.onAddDamage()
+      }
     }
   },
   watch: {
     showAddStatusEffect (opened) {
-      window.removeEventListener('keyup', this.onKeyPress)
+      window.removeEventListener('keyup', this.onKeyPressStatus)
       if (opened) {
         this.$nextTick(() => {
-          window.addEventListener('keyup', this.onKeyPress)
-          this.$refs.statusName.focus()
+          window.addEventListener('keyup', this.onKeyPressStatus)
+          this.$refs.statusname.focus()
+        })
+      }
+    },
+    showTakeDamage (opened) {
+      window.removeEventListener('keyup', this.onKeyPressDamage)
+      if (opened) {
+        this.$nextTick(() => {
+          window.addEventListener('keyup', this.onKeyPressDamage)
+          this.$refs.playerdamage.focus()
         })
       }
     }

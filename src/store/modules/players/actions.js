@@ -15,3 +15,7 @@ export const newCombat = ({ commit }) => {
 export const addStatus = ({ commit }, status) => {
   commit(types.ADD_STATUS, status)
 }
+
+export const damagePlayer = ({ commit }, { playerId, damage }) => {
+  commit(types.DAMAGE_PLAYER, { playerId, damage })
+}

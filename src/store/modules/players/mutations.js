@@ -40,5 +40,12 @@ export default {
       name: status.name,
       turnsLeft: status.turnsLeft
     })
+  },
+  [types.DAMAGE_PLAYER] (state, { playerId, damage }) {
+    const player = state.players.find(p => p.id === playerId)
+    if (!player) {
+      return
+    }
+    player.totalHp -= damage
   }
 }

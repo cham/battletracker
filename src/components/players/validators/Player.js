@@ -4,17 +4,17 @@ export default (instance) => {
   let valid = true
 
   if (!statusName) {
-    instance.$refs.statusName.classList.add('invalid')
+    instance.$refs.statusname.classList.add('invalid')
     valid = false
   } else {
-    instance.$refs.statusName.classList.remove('invalid')
+    instance.$refs.statusname.classList.remove('invalid')
   }
 
   if (!turnsLeft) {
-    instance.$refs.turnsLeft.classList.add('invalid')
+    instance.$refs.turnsleft.classList.add('invalid')
     valid = false
   } else {
-    instance.$refs.turnsLeft.classList.remove('invalid')
+    instance.$refs.turnsleft.classList.remove('invalid')
   }
 
   return valid
