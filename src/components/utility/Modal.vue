@@ -22,6 +22,19 @@
 
 <script>
 export default {
+  methods: {
+    onKeyPress (e) {
+      if (e.key === 'Escape') {
+        this.$emit('cancel')
+      }
+    }
+  },
+  created () {
+    window.addEventListener('keyup', this.onKeyPress)
+  },
+  beforeDestroy () {
+    window.removeEventListener('keyup', this.onKeyPress)
+  }
 }
 </script>
 

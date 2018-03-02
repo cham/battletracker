@@ -1,5 +1,5 @@
 <template>
-  <modal>
+  <modal @cancel="$emit('cancel')">
     <h3 slot="header">Confirm</h3>
     <div slot="body">
       <p>
@@ -23,9 +23,6 @@ export default {
   props: ['message'],
   methods: {
     onKeyPress (e) {
-      if (e.key === 'Escape') {
-        this.$emit('cancel')
-      }
       if (e.key === 'Enter') {
         this.$emit('confirm')
       }

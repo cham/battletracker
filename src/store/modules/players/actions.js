@@ -11,3 +11,7 @@ export const nextPlayer = ({ commit }) => {
 export const newCombat = ({ commit }) => {
   commit(types.NEW_COMBAT)
 }
+
+export const addStatus = ({ commit }, status) => {
+  commit(types.ADD_STATUS, status)
+}

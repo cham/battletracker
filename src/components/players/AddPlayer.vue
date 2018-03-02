@@ -45,6 +45,7 @@ export default {
         name: this.name,
         initiative: parseInt(this.initiative, 0),
         totalHp: parseInt(this.totalHp, 0),
+        statusEffects: [],
         id: generateId()
       })
     },
