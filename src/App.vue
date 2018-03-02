@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <p v-for="player in players">{{player.name}}</p>
+    <player v-for="player in players" :key="player.name" v-bind:player="player"></player>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Player from './components/players/Player'
 
 export default {
+  components: {
+    Player
+  },
   computed: mapGetters({
     players: 'players'
   })
 }
 </script>
 
-<style>
+<style scoped>
 </style>
