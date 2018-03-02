@@ -17,7 +17,13 @@ export default {
     playerIndex++
     if (playerIndex > state.players.length - 1) {
       playerIndex = 0
+      state.turn++
     }
     state.currentPlayer = state.players[playerIndex]
+  },
+  [types.NEW_COMBAT] (state) {
+    state.players = []
+    state.currentPlayer = null
+    state.turn = 1
   }
 }

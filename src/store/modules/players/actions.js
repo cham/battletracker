@@ -7,3 +7,7 @@ export const addPlayer = ({ commit }, player) => {
 export const nextPlayer = ({ commit }) => {
   commit(types.NEXT_PLAYER)
 }
+
+export const newCombat = ({ commit }) => {
+  commit(types.NEW_COMBAT)
+}

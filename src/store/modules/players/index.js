@@ -4,7 +4,8 @@ import mutations from './mutations'
 
 const state = {
   players: [],
-  currentPlayer: null
+  currentPlayer: null,
+  turn: 1
 }
 
 export default {

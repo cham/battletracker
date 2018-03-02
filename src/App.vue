@@ -1,10 +1,14 @@
 <template>
   <div id="app">
     <header>
+      <a @click="newCombat">New Combat</a>
       <a @click="nextPlayer">Next</a>
       <add-player></add-player>
     </header>
     <div>
+      <div>
+        Turn: {{currentTurn}}
+      </div>
       <player v-for="player in players" :key="player.id" v-bind:player="player"></player>
     </div>
   </div>
@@ -21,10 +25,12 @@ export default {
     Player
   },
   computed: mapGetters({
-    players: 'players'
+    players: 'players',
+    currentTurn: 'currentTurn'
   }),
   methods: mapActions([
-    'nextPlayer'
+    'nextPlayer',
+    'newCombat'
   ])
 }
 </script>
