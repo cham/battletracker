@@ -28,7 +28,7 @@
             Duration: <input type="number" ref="turnsLeft" v-model="turnsLeft">
           </p>
           <p>
-            <button @click="onAddStatus()">Add</button>
+            <button ref="addstatusbutton" @click="onAddStatus()">Add</button>
           </p>
         </div>
       </modal>
@@ -76,6 +76,9 @@ export default {
       this.showAddStatusEffect = false
     },
     onKeyPress (e) {
+      if (e.target === this.$refs.addstatusbutton) {
+        return
+      }
       if (e.key === 'Enter') {
         this.onAddStatus()
       }
