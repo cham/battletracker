@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <player v-for="player in players" :key="player.name" v-bind:player="player"></player>
     <add-player></add-player>
+    <player v-for="player in players" :key="player.name" v-bind:player="player"></player>
   </div>
 </template>
 

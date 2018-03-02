@@ -1,19 +1,22 @@
 <template>
-  <ul>
-    <li>
-      Name: <input type="text" v-model="name">
-    </li>
-    <li>
-      Initiative: <input type="text" v-model="initiative">
-      <button @click="onRollInitiative">Roll</button>
-    </li>
-    <li>
-      HP: <input type="text" v-model="totalHp">
-    </li>
-    <li>
-      <button @click="onAddPlayer">Add</button>
-    </li>
-  </ul>
+  <div>
+    <a @click="showAddPlayer = !showAddPlayer">Add player</a>
+    <ul v-if="showAddPlayer">
+      <li>
+        Name: <input type="text" v-model="name">
+      </li>
+      <li>
+        Initiative: <input type="text" v-model="initiative">
+        <button @click="onRollInitiative">Roll</button>
+      </li>
+      <li>
+        HP: <input type="text" v-model="totalHp">
+      </li>
+      <li>
+        <button @click="onAddPlayer">Add</button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -24,7 +27,8 @@ export default {
     return {
       name: '',
       totalHp: 0,
-      initiative: 0
+      initiative: 0,
+      showAddPlayer: false
     }
   },
   methods: {
@@ -46,4 +50,20 @@ export default {
 </script>
 
 <style scoped>
+div {
+  overflow: hidden;
+}
+a {
+  cursor: pointer;
+  user-select: none;
+}
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+li {
+  float: left;
+  margin-right: 2vmin;
+}
 </style>
