@@ -28,7 +28,7 @@
             Duration: <input type="number" ref="turnsLeft" v-model="turnsLeft">
           </p>
           <p>
-            <button @click="onAddStatus();showAddStatusEffect = false">Add</button>
+            <button @click="onAddStatus()">Add</button>
           </p>
         </div>
       </modal>
@@ -73,6 +73,23 @@ export default {
         turnsLeft: parseInt(this.turnsLeft, 0),
         id: generateId()
       })
+      this.showAddStatusEffect = false
+    },
+    onKeyPress (e) {
+      if (e.key === 'Enter') {
+        this.onAddStatus()
+      }
+    }
+  },
+  watch: {
+    showAddStatusEffect (opened) {
+      window.removeEventListener('keyup', this.onKeyPress)
+      if (opened) {
+        this.$nextTick(() => {
+          window.addEventListener('keyup', this.onKeyPress)
+          this.$refs.statusName.focus()
+        })
+      }
     }
   }
 }
