@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header>
+      <a @click="nextPlayer">Next</a>
       <add-player></add-player>
     </header>
     <div>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import AddPlayer from './components/players/AddPlayer'
 import Player from './components/players/Player'
 
@@ -21,7 +22,10 @@ export default {
   },
   computed: mapGetters({
     players: 'players'
-  })
+  }),
+  methods: mapActions([
+    'nextPlayer'
+  ])
 }
 </script>
 

@@ -3,7 +3,8 @@ import * as actions from './actions'
 import mutations from './mutations'
 
 const state = {
-  players: []
+  players: [],
+  currentPlayer: null
 }
 
 export default {

@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul v-bind:class="{ current: currentPlayer === player }">
     <li>
       {{player.name}}
     </li>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: ['player'],
   data () {
@@ -20,9 +22,15 @@ export default {
       totalHp: this.player.totalHp,
       initiative: this.player.initiative
     }
-  }
+  },
+  computed: mapGetters({
+    currentPlayer: 'currentPlayer'
+  })
 }
 </script>
 
 <style scoped>
+.current {
+  background: #afa;
+}
 </style>
