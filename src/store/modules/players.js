@@ -1,6 +1,15 @@
 const state = {
   all: [
-    { name: 'Spooky Steve' }
+    {
+      name: 'Spooky Steve',
+      initiative: 0,
+      totalHp: 27
+    },
+    {
+      name: 'Normal Norman',
+      initiative: 0,
+      totalHp: 22
+    }
   ]
 }
 
