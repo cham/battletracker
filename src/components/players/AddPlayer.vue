@@ -59,10 +59,6 @@ export default {
 div {
   overflow: hidden;
 }
-a {
-  cursor: pointer;
-  user-select: none;
-}
 ul, li {
   margin: 0;
   padding: 0;
