@@ -3,14 +3,14 @@
     <a @click="showAddPlayer = !showAddPlayer">Add player</a>
     <ul v-if="showAddPlayer">
       <li>
-        Name: <input type="text" v-model="name">
+        Name: <input type="text" ref="name" v-model="name">
       </li>
       <li>
-        Initiative: <input type="text" v-model="initiative">
+        Initiative: <input type="text" ref="initiative" v-model="initiative">
         <button @click="onRollInitiative">Roll</button>
       </li>
       <li>
-        HP: <input type="text" v-model="totalHp">
+        HP: <input type="text" ref="hp" v-model="totalHp">
       </li>
       <li>
         <button @click="onAddPlayer">Add</button>
@@ -22,6 +22,7 @@
 <script>
 import { mapActions } from 'vuex'
 import { generateId } from '../../utils/uuidv4'
+import valid from './validators/AddPlayer'
 
 export default {
   data () {
@@ -37,10 +38,13 @@ export default {
       'addPlayer'
     ]),
     onAddPlayer () {
+      if (!valid(this)) {
+        return
+      }
       this.addPlayer({
         name: this.name,
-        initiative: parseInt(this.initiative, 0),
-        totalHp: parseInt(this.totalHp, 0),
+        initiative: this.initiative,
+        totalHp: this.totalHp,
         id: generateId()
       })
     },
