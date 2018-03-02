@@ -1,28 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <p v-for="player in players">{{player.name}}</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  computed: mapGetters({
+    players: 'players'
+  })
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
