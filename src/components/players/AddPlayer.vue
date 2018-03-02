@@ -43,8 +43,8 @@ export default {
       }
       this.addPlayer({
         name: this.name,
-        initiative: this.initiative,
-        totalHp: this.totalHp,
+        initiative: parseInt(this.initiative, 0),
+        totalHp: parseInt(this.totalHp, 0),
         id: generateId()
       })
     },
