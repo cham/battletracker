@@ -61,7 +61,6 @@ export default {
   props: ['player'],
   data () {
     return {
-      initiative: this.player.initiative,
       showAddStatusEffect: false,
       showTakeDamage: false,
       statusName: '',
