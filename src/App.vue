@@ -48,10 +48,18 @@ export default {
 </script>
 
 <style scoped>
+#app {
+  padding-top: 52px;
+}
 header {
   background: rgba(0,0,0,0.6);
   padding: 10px 20px;
   color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
 }
 .new-combat {
   position: absolute;

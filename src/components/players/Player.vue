@@ -150,8 +150,7 @@ export default {
 .player-wrapper {
   overflow: hidden;
   margin: 0;
-  padding: 0;
-  margin-bottom: 5px;
+  padding: 5px;
   line-height: 32px;
 }
 .player-name,

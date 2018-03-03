@@ -6,8 +6,29 @@
     <title>battletracker</title>
     <link rel="stylesheet" href="static/open-sans.css"></link>
     <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      * {
+        user-select: none;
+      }
+      body {
+        background: url(static/paper.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        color: #111;
+        font-family: 'Open Sans', serif;
+        font-weight: 600;
+      }
       .invalid {
-        background-color: #f99;
+        background-color: #c55;
       }
       a:hover {
         background: #7b5f0c;
@@ -29,24 +50,7 @@
         font-weight: 700;
       }
       input[type=number] {
-        width: 60px;
-      }
-      html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      *, *:before, *:after {
-        box-sizing: inherit;
-      }
-      body {
-        background: url(static/paper.jpg);
-        background-size: cover;
-        color: #111;
-        font-family: 'Open Sans', serif;
-        font-weight: 600;
+        width: 75px;
       }
     </style>
   </head>
