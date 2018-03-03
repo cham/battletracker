@@ -22,14 +22,7 @@
       </modal>
     </li>
     <li class="player-status">
-      Status effects:
-      <ul v-if="player.statusEffects.length">
-        <li v-for="status in player.statusEffects" :key="status.id">
-          <span v-if="status.turnsLeft > -1">{{status.turnsLeft}} turns - {{status.name}}</span>
-          <span v-else>Expired - {{status.name}}</span>
-        </li>
-      </ul>
-      <button @click="showAddStatusEffect = true">Add Status</button>
+      <button class="player-addstatus" @click="showAddStatusEffect = true">Add Status</button>
       <modal v-if="showAddStatusEffect" @cancel="showAddStatusEffect = false">
         <h3 slot="header">Add Status Effect</h3>
         <div slot="body">
@@ -44,6 +37,12 @@
           </p>
         </div>
       </modal>
+      <ul class="status-list" v-if="player.statusEffects.length">
+        <li v-for="status in player.statusEffects" :key="status.id">
+          <span v-if="status.turnsLeft > -1">{{status.turnsLeft}} turns - {{status.name}}</span>
+          <span v-else>Expired - {{status.name}}</span>
+        </li>
+      </ul>
     </li>
   </ul>
 </template>
@@ -143,12 +142,17 @@ export default {
 
 <style scoped>
 .current {
-  background: #afa;
+  background: rgba(0,0,0,0.2);
+}
+.current .player-name {
+  text-indent: 20px;
 }
 .player-wrapper {
   overflow: hidden;
   margin: 0;
-  padding: 0
+  padding: 0;
+  margin-bottom: 5px;
+  line-height: 32px;
 }
 .player-name,
 .player-initiative,
@@ -158,9 +162,12 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 20%;
+  width: 25%;
 }
-.player-status {
-  width: 40%;
+.player-addstatus {
+  float: right;
+}
+.status-list {
+  clear: right;
 }
 </style>

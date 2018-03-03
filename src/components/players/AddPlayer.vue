@@ -1,9 +1,8 @@
 <template>
   <div>
-    <a @click="showAddPlayer = !showAddPlayer">Add player</a>
-    <ul v-if="showAddPlayer">
+    <ul>
       <li>
-        Name: <input type="text" ref="name" v-model="name">
+        <input class="addplayer-name" type="text" ref="name" v-model="name">
       </li>
       <li>
         Initiative: <input type="number" ref="initiative" v-model="initiative">
@@ -29,8 +28,7 @@ export default {
     return {
       name: '',
       totalHp: 0,
-      initiative: 0,
-      showAddPlayer: false
+      initiative: 0
     }
   },
   methods: {
@@ -51,25 +49,6 @@ export default {
     },
     onRollInitiative () {
       this.initiative = Math.ceil(Math.random() * 20)
-    },
-    onKeyPress (e) {
-      if (e.target === this.$refs.addplayerbutton) {
-        return
-      }
-      if (e.key === 'Enter') {
-        this.onAddPlayer()
-      }
-    }
-  },
-  watch: {
-    showAddPlayer (opened) {
-      window.removeEventListener('keyup', this.onKeyPress)
-      if (opened) {
-        this.$nextTick(() => {
-          window.addEventListener('keyup', this.onKeyPress)
-          this.$refs.name.focus()
-        })
-      }
     }
   }
 }
@@ -86,6 +65,14 @@ ul, li {
 }
 li {
   float: left;
-  margin-right: 2vmin;
+  margin-right: 30px;
+}
+h4 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.addplayer-name {
+  margin-left: 0;
 }
 </style>

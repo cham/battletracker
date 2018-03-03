@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <header>
-      <a @click="confirmNewCombat = true">New Combat</a>
-      <a @click="nextPlayer">Next</a>
+      <a class="new-combat" @click="confirmNewCombat = true">New Combat</a>
       <add-player></add-player>
     </header>
-    <div>
-      <div>
-        Turn: {{currentTurn}}
-      </div>
+    <div class="player-area">
+      <p>
+        <a @click="nextPlayer">Next Player</a>
+        <span class="current-turn">Turn: {{currentTurn}}</span>
+      </p>
       <player v-for="player in players" :key="player.id" v-bind:player="player"></player>
     </div>
     <confirmation-modal v-if="confirmNewCombat"
@@ -48,13 +48,20 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  font-family: sans-serif;
-}
 header {
-  height: 75px;
-  background: #555;
+  background: rgba(0,0,0,0.6);
+  padding: 10px 20px;
   color: #fff;
-  padding: 5px 10px;
+}
+.new-combat {
+  position: absolute;
+  right: 20px;
+}
+.current-turn {
+  position: absolute;
+  right: 20px;
+}
+.player-area {
+  padding: 0 20px;
 }
 </style>
