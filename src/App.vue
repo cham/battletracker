@@ -56,6 +56,7 @@ header {
 .new-combat {
   position: absolute;
   right: 20px;
+  top: 9px;
 }
 .current-turn {
   position: absolute;

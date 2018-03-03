@@ -65,7 +65,7 @@ ul, li {
 }
 li {
   float: left;
-  margin-right: 30px;
+  margin-right: 15px;
 }
 h4 {
   margin: 0;
@@ -74,5 +74,6 @@ h4 {
 }
 .addplayer-name {
   margin-left: 0;
+  width: 150px;
 }
 </style>
