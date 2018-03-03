@@ -144,9 +144,6 @@ export default {
 .current {
   background: rgba(0,0,0,0.2);
 }
-.current .player-name {
-  text-indent: 20px;
-}
 .player-wrapper {
   overflow: hidden;
   margin: 0;
