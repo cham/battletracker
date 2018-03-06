@@ -1,5 +1,5 @@
 <template>
-  <ul v-bind:class="{ current: currentPlayer === player, 'player-wrapper': true }">
+  <ul v-bind:class="{ current: currentPlayer === player, dead: player.totalHp < 1, 'player-wrapper': true }">
     <li class="player-name">
       {{player.name}}
     </li>
@@ -143,6 +143,12 @@ export default {
 <style scoped>
 .current {
   background: rgba(0,0,0,0.2);
+}
+.dead {
+  background: rgba(255,0,0,0.3);
+}
+.dead.current {
+  background: rgba(100,0,0,0.3);
 }
 .player-wrapper {
   overflow: hidden;
