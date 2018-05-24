@@ -6,6 +6,8 @@
 
 ``` bash
 # install dependencies
+nvm install
+nvm use
 npm install
 
 # serve with hot reload at localhost:8080
